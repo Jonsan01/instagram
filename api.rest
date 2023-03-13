@@ -1,0 +1,101 @@
+### Get all user
+GET http://localhost:3000/user?page=4&limit=10&sort=id
+
+### signup user
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "name":"Jonsan Devganiya",
+    "email":"Jonsan.devganiya.21@gmail.com",
+    "password":"Jonsan@12345"
+}
+
+### show only one user details
+GET http://localhost:3000/user/640dcf197a0a896b571d03b3
+
+### Login user
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "email":"Jonsan.devganiya.20@gmail.com",
+    "password":"Jonsan@1234"
+}
+
+### refresh token
+POST http://localhost:3000/user/refreshtoken
+Content-Type: application/json
+
+{
+    "refreshToken":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGRjZjE5N2EwYTg5NmI1NzFkMDNiMyIsImlhdCI6MTY3ODYyNjYyMX0.7CicQ7myzpriGd26pL6AhDRDuvTFJI74LG7Xnpd0F-kEMjK3IiwEIrdRRgNCJ6-z"
+}
+
+### Create post
+POST http://localhost:3000/post
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGRjZjE5N2EwYTg5NmI1NzFkMDNiMyIsImlhdCI6MTY3ODY4MDgwOSwiZXhwIjoxNjc4NjgxMTA5fQ.3eFaaRLjC5OXOlDgwVNlHxk8fGP0myyBbHKfgOtFqME-PJa0-nyB5EVsgKcYewu5
+
+{
+    "media":["link1","link2"],
+    "capation":"this is second post"
+}
+
+### get all post
+GET http://localhost:3000/post
+
+### get one post info
+GET http://localhost:3000/post/640dcf607a0a896b571d03b9
+
+### update post
+PUT http://localhost:3000/post/640dcf607a0a896b571d03b9
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGQ1YjE5YmRhYWNiNDYwY2I0Y2QzMCIsImlhdCI6MTY3ODYyNjc4MSwiZXhwIjoxNjc4NjI3MDgxfQ.RuFIstSHuXkQub_wnc6i_FhKpMGfec8M7APCqdBrUXLIQEOyXxjkH-IFBY4tJ3l3
+
+{
+    "capation":"this is second posts updated caption"
+}
+
+### like in post
+POST http://localhost:3000/post/640dcf607a0a896b571d03b9/like
+Authorization: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGRjZjE5N2EwYTg5NmI1NzFkMDNiMyIsImlhdCI6MTY3ODYyNjgzMSwiZXhwIjoxNjc4NjI3MTMxfQ.NTlAafC1RvWuVdRy-fGNUopQ_3PjdLYwMFVMRLOfc2oWDkF2uWNOH5NI8kRiGkPn
+
+### dislike in post
+DELETE http://localhost:3000/post/640dcf607a0a896b571d03b9/like
+Authorization: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGRjZjE5N2EwYTg5NmI1NzFkMDNiMyIsImlhdCI6MTY3ODYyNjgzMSwiZXhwIjoxNjc4NjI3MTMxfQ.NTlAafC1RvWuVdRy-fGNUopQ_3PjdLYwMFVMRLOfc2oWDkF2uWNOH5NI8kRiGkPn
+
+### show all likes 
+GET http://localhost:3000/post/640dcf607a0a896b571d03b9/like
+
+### create comment
+POST http://localhost:3000/post/640dcf607a0a896b571d03b9/comment
+Authorization: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGRjZjE5N2EwYTg5NmI1NzFkMDNiMyIsImlhdCI6MTY3ODYyNjgzMSwiZXhwIjoxNjc4NjI3MTMxfQ.NTlAafC1RvWuVdRy-fGNUopQ_3PjdLYwMFVMRLOfc2oWDkF2uWNOH5NI8kRiGkPn
+Content-Type: application/json
+
+{
+    "message":"this is demo comment in this post"
+}
+
+### update comment
+PUT http://localhost:3000/post/640d672f9c6494908e496dd4/comment/640dccad763fb383f4fadbef
+Authorization: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGQ1YjE5YmRhYWNiNDYwY2I0Y2QzMCIsImlhdCI6MTY3ODYyNTcxMiwiZXhwIjoxNjc4NjI2MDEyfQ.E7jIu-nGKlq0ERoZBUab3rj8gAXXVE7rrCet4L6VLPjoxbX4ZvMDsM4wGKN3zaVR
+Content-Type: application/json
+
+{
+    "message":"this is demo comment in this post (updated)"
+}
+
+### delete comment
+DELETE http://localhost:3000/post/640d672f9c6494908e496dd4/comment/640dccad763fb383f4fadbef
+Authorization: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGQ1YjE5YmRhYWNiNDYwY2I0Y2QzMCIsImlhdCI6MTY3ODYyNTcxMiwiZXhwIjoxNjc4NjI2MDEyfQ.E7jIu-nGKlq0ERoZBUab3rj8gAXXVE7rrCet4L6VLPjoxbX4ZvMDsM4wGKN3zaVR
+
+### show all comments
+GET http://localhost:3000/post/640dcf607a0a896b571d03b9/comment
+
+### show all like in one comment
+GET http://localhost:3000/post/640dcf607a0a896b571d03b9/comment/640dd0727a0a896b571d03ed/like
+Authorization: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGRjZjE5N2EwYTg5NmI1NzFkMDNiMyIsImlhdCI6MTY3ODY3OTUxNCwiZXhwIjoxNjc4Njc5ODE0fQ.BBN6N0RbSV97pyz7ZqNPWzL-HpiaX98XENzs-JRCtbHnq8o2ax-R9SGQsvVexiuA
+
+### like in one comment
+POST http://localhost:3000/post/640dcf607a0a896b571d03b9/comment/640dd0727a0a896b571d03ed/like
+Authorization: Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGRjZjE5N2EwYTg5NmI1NzFkMDNiMyIsImlhdCI6MTY3ODY3OTUxNCwiZXhwIjoxNjc4Njc5ODE0fQ.BBN6N0RbSV97pyz7ZqNPWzL-HpiaX98XENzs-JRCtbHnq8o2ax-R9SGQsvVexiuA
